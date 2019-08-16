@@ -12,14 +12,8 @@ code {
 }
 
 * {
-  /* margin-top: 50px; */
   text-align: center;
 }
-
-/* button {
-  width: 150px;
-  height: 100px;
-} */
 
 .flex {
   display: flex;
@@ -30,6 +24,27 @@ code {
   margin: 0 25px;
 }
 
+.flex_set {
+  display: flex;
+  flex-wrap:wrap;
+
+  justify-content: space-evenly;
+
+  margin: 0 25px;
+}
+
 .cards {
   margin-top: 25px;
+}
+
+.sets {
+
+    position: relative;
+    float: left;
+    width:  150px;
+    height: 150px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+    
 }
