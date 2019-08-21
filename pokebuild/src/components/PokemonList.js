@@ -5,7 +5,7 @@ import Loader from 'react-loader-spinner'
 import PokemonCard from './PokemonCard'
 import SetsCard from './SetsCard'
 
-import { getData, getSets } from '../actions';
+import { getData, getSets, getInfo } from '../actions';
 
 
 const PokemonList = props => {
@@ -16,13 +16,13 @@ const PokemonList = props => {
     }, [])
 
     return (
-        <>
+        <div>
             <h1>Pick A Pokemon TCG Set</h1>
 
             <div>
                 <div className="flex_set">
-                    {props.sets.slice(0, 4).map(set => (
-                        <a href="#" onClick={props.getData}><SetsCard sets={set} /></a>
+                    {props.sets.slice(0, 1).map(set => (
+                        <SetsCard sets={set} getData={props.getData} />
                     ))}
                 </div>
                 {props.isLoading ?
@@ -31,15 +31,20 @@ const PokemonList = props => {
                         color="red"
                         height={180}
                         width={180} />
-                    : <button >Load Generation One Pokemon</button>
+                    : null
                 }
             </div>
+
+
             <div className="flex">
                 {props.pokemon.map(poke => (
-                    <PokemonCard pokemon={poke} />
+                    <div>
+                        <PokemonCard pokemon={poke} getInfo={props.getInfo} />
+                    </div>
                 ))}
             </div>
-        </>
+
+        </div>
     )
 }
 
@@ -47,8 +52,9 @@ const mapStateToProps = state => {
     return {
         isLoading: state.isLoading,
         pokemon: state.pokemon,
-        sets: state.sets
+        sets: state.sets,
+
     }
 }
 
-export default connect(mapStateToProps, { getData, getSets })(PokemonList)
+export default connect(mapStateToProps, { getData, getSets, getInfo })(PokemonList)

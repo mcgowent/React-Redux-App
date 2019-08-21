@@ -1,11 +1,15 @@
 import React from 'react'
 
-const PokemonCard = props => {
+const SetsCard = props => {
     return (
         <div>
-            <img className="sets" src={props.sets.logoUrl} alt={props.sets.code} />
+            <img onClick={props.getData} className="sets" src={props.sets.logoUrl} alt={props.sets.code} />
         </div>
     )
 }
 
-export default PokemonCard
+
+
+
+
+export default SetsCard
